@@ -1,0 +1,80 @@
+#### Contents of the preconfiguration file (for stretch)
+### Localization
+# Preseeding only locale sets language, country and locale.
+d-i debian-installer/locale string en_US
+
+# Keyboard selection.
+d-i keyboard-configuration/xkb-keymap select us
+
+### Network configuration
+# Disable network configuration entirely. This is useful for cdrom
+# installations on non-networked devices where the network questions,
+# warning and long timeouts are a nuisance.
+#d-i netcfg/enable boolean false
+
+# Any hostname and domain names assigned from dhcp take precedence over
+# values set here. However, setting the values still prevents the questions
+# from being shown, even if values come from dhcp.
+#d-i netcfg/get_hostname string unassigned-hostname
+#d-i netcfg/get_domain string unassigned-domain
+
+# If you want to force a hostname, regardless of what either the DHCP
+# server returns or what the reverse DNS entry for the IP is, uncomment
+# and adjust the following line.
+d-i netcfg/hostname string debianMate
+
+### Account setup
+# Skip creation of a root account (normal user account will be able to
+# use sudo).
+d-i passwd/root-login boolean false
+
+# Root password, either in clear text
+#d-i passwd/root-password password ROOTPASSWORD
+#d-i passwd/root-password-again password ROOTPASSWORD
+# or encrypted using a crypt(3)  hash.
+#d-i passwd/root-password-crypted password [crypt(3) hash]
+
+# To create a normal user account.
+d-i passwd/user-fullname string wilzyx
+d-i passwd/username string wilzyx
+# Normal user's password, either in clear text
+d-i passwd/user-password password rolltide!
+d-i passwd/user-password-again password rolltide!
+# or encrypted using a crypt(3) hash.
+#d-i passwd/user-password-crypted password [crypt(3) hash]
+
+### Clock and time zone setup
+# Controls whether or not the hardware clock is set to UTC.
+d-i clock-setup/utc boolean true
+
+# You may set this to any valid setting for $TZ; see the contents of
+# /usr/share/zoneinfo/ for valid values.
+d-i time/zone string US/Pacific
+
+# Controls whether to use NTP to set the clock during the install
+d-i clock-setup/ntp boolean true
+# NTP server to use. The default is almost always fine here.
+d-i clock-setup/ntp-server string 0.debian.pool.ntp.org
+
+# Some versions of the installer can report back on what software you have
+# installed, and what software you use. The default is not to report back,
+# but sending reports helps the project determine what software is most
+# popular and include it on CDs.
+popularity-contest popularity-contest/participate boolean false
+
+# This is fairly safe to set, it makes grub install automatically to the MBR
+# if no other operating system is detected on the machine.
+d-i grub-installer/only_debian boolean true
+
+# This one makes grub-installer install to the MBR if it also finds some other
+# OS, which is less safe as it might not be able to boot that other OS.
+d-i grub-installer/with_other_os boolean true
+
+# Due notably to potential USB sticks, the location of the MBR can not be
+# determined safely in general, so this needs to be specified:
+#d-i grub-installer/bootdev  string /dev/sda
+# To install to the first device (assuming it is not a USB stick):
+#d-i grub-installer/bootdev  string default
+
+# Avoid that last message about the install being complete.
+d-i finish-install/reboot_in_progress note

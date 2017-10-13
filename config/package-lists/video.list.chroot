@@ -1,0 +1,12 @@
+i965-va-driver
+libosmesa6
+libva-egl1
+libva-glx1
+libva-tpi1
+libvdpau-va-gl1
+mesa-va-drivers
+mesa-vdpau-drivers
+mesa-vulkan-drivers
+va-driver-all
+vdpau-driver-all
+vdpau-va-driver

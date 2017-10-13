@@ -1,0 +1,5 @@
+xorg
+xscreensaver-data
+xserver-xorg-input-libinput
+xserver-xorg-input-synaptics
+xserver-xorg-video-intel
