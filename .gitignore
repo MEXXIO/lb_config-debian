@@ -26,6 +26,8 @@ config/source
 
 config/control
 
+config/includes.installer/preseed.cfg
+
 live-image-*.iso
 live-image-*.img
 live-image-*.tar*
