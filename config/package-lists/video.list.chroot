@@ -4,6 +4,7 @@ libva-egl1
 libva-glx1
 libva-tpi1
 libvdpau-va-gl1
+libxatracker2
 mesa-va-drivers
 mesa-vdpau-drivers
 mesa-vulkan-drivers

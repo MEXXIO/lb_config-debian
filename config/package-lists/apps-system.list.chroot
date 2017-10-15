@@ -2,6 +2,7 @@ dconf-editor
 gnome-disk-utility
 gnome-system-tools
 gufw
+libgtk2-perl
 network-manager-gnome
 seahorse
 software-properties-gtk

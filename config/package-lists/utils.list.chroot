@@ -19,6 +19,8 @@ libpam-gnome-keyring
 linux-cpupower
 live-build
 lm-sensors
+patch
+python-pyside.qtgui
 thermald
 vainfo
 vdpauinfo
