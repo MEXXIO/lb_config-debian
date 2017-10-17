@@ -1,4 +1,5 @@
-dconf-tools
+dconf-cli
+dconf-editor
 gnome-disk-utility
 gnome-system-tools
 gufw

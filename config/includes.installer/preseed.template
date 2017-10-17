@@ -29,7 +29,7 @@ d-i keyboard-configuration/xkb-keymap select us
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
-d-i netcfg/link_wait_timeout string 10
+d-i netcfg/link_wait_timeout string 3
 
 # If you have a slow dhcp server and the installer times out waiting for
 # it, this might be useful.
@@ -74,7 +74,7 @@ d-i netcfg/get_domain string unassigned-domain
 d-i netcfg/hostname string HOSTNAME
 
 # Disable that annoying WEP key dialog.
-d-i netcfg/wireless_wep string
+#d-i netcfg/wireless_wep string
 # The wacky dhcp hostname that some ISPs use as a password of sorts.
 #d-i netcfg/dhcp_hostname string radish
 
@@ -94,9 +94,9 @@ d-i hw-detect/load_firmware boolean false
 
 ### Mirror settings
 # If you select ftp, the mirror/country string does not need to be set.
-d-i mirror/protocol string ftp
+d-i mirror/protocol string http
 #d-i mirror/country string manual
-d-i mirror/http/hostname string http.us.debian.org
+d-i mirror/http/hostname string mirrors.kernel.org
 d-i mirror/http/directory string /debian
 d-i mirror/http/proxy string
 
@@ -131,7 +131,7 @@ d-i passwd/user-password-again password USERPASSWORD
 
 # The user account will be added to some standard initial groups. To
 # override that, use this.
-#d-i passwd/user-default-groups string audio cdrom video
+#d-i passwd/user-default-groups string audio cdrom video floppy dip plugdev netdev sudo
 
 ### Clock and time zone setup
 # Controls whether or not the hardware clock is set to UTC.
@@ -317,7 +317,6 @@ d-i apt-setup/security_host string security.debian.org
 
 # Uncomment this to add multiarch configuration for i386
 #d-i apt-setup/multiarch string i386
-
 
 ### Package selection
 #tasksel tasksel/first multiselect standard, web-server, kde-desktop
