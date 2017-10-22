@@ -1,26 +1,28 @@
 #!/bin/bash
+
 resolve_dependencies() {
-	grep -q $@ .tmp/$PKG.list
+	grep -q $@ .deptmp/$PKG.list
 	if [ $? != 0 ]
 	then
-		echo $@ >> .tmp/$PKG.list
-		apt-cache depends $@ | fgrep -v '<' | grep ' .Depends: .*' | sed 's| .Depends: ||' | sort > .tmp/$@.depends
-		if [ -s .tmp/$@.depends ]
+		echo $@ >> .deptmp/$PKG.list
+		apt-cache depends $@ | grep ' .Depends: .*' | grep -v '<' | sed 's| .Depends: ||' | sort > .deptmp/$@.depends
+		if [ -s .deptmp/$@.depends ]
 		then
-			return 1	# more deps needed to process
+			return 1
 		else
-			rm -f .tmp/$@.depends	# don't process; no deps
+			rm -f .deptmp/$@.depends
 		fi
 	fi
 	return 0
 }
+
 resolve_recursively() {
 	while true
 	do
-		CNT=$(ls -l .tmp/ | fgrep '.depends' | wc -l)
+		CNT=$(ls -l .deptmp/ | grep '.depends' | wc -l)
 		if [ $CNT -gt 0 ]
 		then
-			for LIST in .tmp/*.depends
+			for LIST in .deptmp/*.depends
 			do
 				for DEP in $(cat $LIST)
 				do
@@ -29,8 +31,8 @@ resolve_recursively() {
 				rm -f $LIST
 			done
 		else
-			cat .tmp/$PKG.list | sort > $PKG.list
-			rm -rf .tmp
+			cat .deptmp/$PKG.list | sort > $PKG.list
+			rm -rf .deptmp
 			break
 		fi
 	done
@@ -38,17 +40,17 @@ resolve_recursively() {
 
 if [ -z $1 ]
 then
-	echo "Specify the name of a package"
+	echo -e "Usage: $(basename $0) packageName\n"
 	exit
 fi
 
 PKG=$1
-rm -rf .tmp
-mkdir -p .tmp
-> .tmp/$PKG.list
+rm -rf .deptmp
+mkdir -p .deptmp
+> .deptmp/$PKG.list
 
 resolve_dependencies $PKG
-if [ $? == 0 ]	# PKG has no dependencies
+if [ $? == 0 ]
 then
 	echo "$PKG has no dependencies"
 else
