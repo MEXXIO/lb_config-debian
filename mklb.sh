@@ -19,4 +19,4 @@ preseed_config() {
 if [ $# == 0 ]; then ARGS="clean config bootstrap chroot installer binary" ; else ARGS="$@" ; fi
 for ARG in $ARGS ; do lb $ARG ; done
 
-[ -e config/includes.installer/preseed.template ] && rm -f "$PRESEED_CFG"
+rm -f "$PRESEED_CFG"
