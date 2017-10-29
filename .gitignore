@@ -28,6 +28,8 @@ config/control
 
 config/includes.installer/preseed.cfg
 
+config/packages.chroot
+
 live-image-*.iso
 live-image-*.img
 live-image-*.tar*
@@ -35,6 +37,8 @@ live-image-*.contents
 live-image-*.files
 live-image-*.packages
 live-image-*.zsync
+
+mate
 
 source/
 source*.iso

@@ -16,7 +16,14 @@ preseed_config() {
 }
 [ -e .local/lb.cfg ] && preseed_config
 
-if [ $# == 0 ]; then ARGS="clean config bootstrap chroot installer binary" ; else ARGS="$@" ; fi
-for ARG in $ARGS ; do lb $ARG ; done
+lb clean
+lb config
+lb bootstrap
+#./mate/mkbootstrap.sh
+#./mate/mkchroot.sh
+#./mate/mkmate.sh
+lb chroot
+lb installer
+lb binary
 
 rm -f "$PRESEED_CFG"
