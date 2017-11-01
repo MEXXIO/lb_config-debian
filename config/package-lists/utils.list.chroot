@@ -19,6 +19,7 @@ live-build
 lm-sensors
 patch
 python-pyside.qtgui
+schroot
 thermald
 vainfo
 vdpauinfo
