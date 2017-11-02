@@ -19,8 +19,6 @@ preseed_config() {
 lb clean
 lb config
 lb bootstrap
-#./mate/mkbootstrap.sh
-#./mate/mkchroot.sh
 #./mate/mkmate.sh
 lb chroot
 lb installer
