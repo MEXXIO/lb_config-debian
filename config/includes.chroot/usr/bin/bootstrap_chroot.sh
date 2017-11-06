@@ -15,15 +15,21 @@ root_or_gtfo() {
 }
 
 check_arguments() {
-	if [ ! -z $1 ]
-	then
-		if [ -e $1 ]
-		then
-			CHROOT_INCLUDES="--include=$(cat $1)"
-		else
-			show_usage
-		fi
-	fi
+	case $# in
+		0)
+			return
+			;;
+		1)
+			if [ -e $1 ]
+			then
+				CHROOT_INCLUDES="--include=$(cat $1)"
+				return
+			fi
+			;;
+		*)
+			;;
+	esac
+	show_usage
 }
 
 is_installed() {
@@ -42,8 +48,8 @@ check_host_dependencies() {
 	done
 }
 
-do_debootstrap() {	
-	debootstrap --arch=amd64 --variant=buildd "$CHROOT_DEPENDS" $@ sid $CHROOT_DIR
+do_debootstrap() {
+	debootstrap --arch=amd64 --variant=buildd "$CHROOT_INCLUDES" $@ sid $CHROOT_DIR
 }
 
 configure_schroot() {
@@ -62,10 +68,9 @@ EOF
 setup_chroot() {
 	if [ -e $CHROOT_DIR/.bootstrapped ]
 	then
-		echo "chroot already configured in $CHROOT_DIR"
-		schroot -d / apt update
+		echo "A chroot environment is already configured in $CHROOT_DIR"
 	else
-		echo "setting up chroot in $CHROOT_DIR"
+		echo "Setting up chroot in $CHROOT_DIR"
 		mkdir -p $CHROOT_DIR
 
 		if [ ! -e $CHROOT_TARBALL ]
@@ -81,9 +86,12 @@ setup_chroot() {
 		schroot -i 2>/dev/null | fgrep -q $CHROOT_DIR
 	if [ $? != 0 ]
 	then
-		echo "configuring schroot"
+		echo "Configuring schroot"
 		configure_schroot
 	fi
+
+	schroot -d / apt update
+	schroot -d / apt upgrade
 }
 
 root_or_gtfo

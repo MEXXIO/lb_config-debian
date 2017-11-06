@@ -3,8 +3,15 @@
 cd $(dirname $0)
 PRESEED_CFG='config/includes.installer/preseed.cfg'
 
-preseed_config() {
-	source .local/lb.cfg
+lb_MATE() {
+	if [ ! -d mate ]
+	then
+		git clone git://github.com/unchurchable1/mate.git mate
+	fi
+	./mate/mkmate.sh
+}
+lb_preseed() {
+	[ -e .local/lb.cfg ] && source .local/lb.cfg
 	[ -n "$PRESEED_HOSTNAME" ] && [ -n "$PRESEED_USERNAME" ] &&
 		[ -n "$PRESEED_USERFULLNAME" ] && [ -n "$PRESEED_USERPASSWORD" ] &&
 			cp -f config/includes.installer/preseed.template "$PRESEED_CFG" || return
@@ -14,12 +21,12 @@ preseed_config() {
 	sed -i "s|USERFULLNAME|$PRESEED_USERFULLNAME|" "$PRESEED_CFG"
 	sed -i "s|USERPASSWORD|$PRESEED_USERPASSWORD|" "$PRESEED_CFG"
 }
-[ -e .local/lb.cfg ] && preseed_config
 
+#lb_MATE
+lb_preseed
 lb clean
 lb config
 lb bootstrap
-#./mate/mkmate.sh
 lb chroot
 lb installer
 lb binary
