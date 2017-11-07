@@ -95,6 +95,7 @@ patch
 pluma
 plymouth
 plymouth-label
+powertop
 pulseaudio
 python-caja
 python-pyside.qtgui
