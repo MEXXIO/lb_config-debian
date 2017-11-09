@@ -1,16 +1,16 @@
 #!/bin/sh
 
 resolve_dependencies() {
-	grep -q $@ .deptmp/$PKG.list
+	grep -q $@ $TMP/$PKG.list
 	if [ $? != 0 ]
 	then
-		echo $@ >> .deptmp/$PKG.list
-		apt-cache depends $@ | grep ' .Depends: .*' | grep -v '<' | sed 's| .Depends: ||' | sort > .deptmp/$@.depends
-		if [ -s .deptmp/$@.depends ]
+		echo $@ >> $TMP/$PKG.list
+		apt-cache depends $@ | grep ' .Depends: .*' | grep -v '<' | sed 's| .Depends: ||' > $TMP/$@.depends
+		if [ -s $TMP/$@.depends ]
 		then
 			return 1
 		else
-			rm -f .deptmp/$@.depends
+			rm -f $TMP/$@.depends
 		fi
 	fi
 	return 0
@@ -19,10 +19,10 @@ resolve_dependencies() {
 resolve_recursively() {
 	while true
 	do
-		CNT=$(ls -l .deptmp/ | grep '.depends' | wc -l)
+		CNT=$(ls -l $TMP | grep '.depends' | wc -l)
 		if [ $CNT -gt 0 ]
 		then
-			for LIST in .deptmp/*.depends
+			for LIST in $TMP/*.depends
 			do
 				for DEP in $(cat $LIST)
 				do
@@ -31,8 +31,7 @@ resolve_recursively() {
 				rm -f $LIST
 			done
 		else
-			cat .deptmp/$PKG.list | sort > $PKG.list
-			rm -rf .deptmp
+			cat $TMP/$PKG.list | sort > $PKG.list
 			break
 		fi
 	done
@@ -40,17 +39,18 @@ resolve_recursively() {
 
 if [ -z $1 ]
 then
-	echo -e "Usage: $(basename $0) packageName\n"
+	echo "Usage: $(basename $0) <packageName>"
 	exit
 fi
 
 PKG=$1
-rm -rf .deptmp
-mkdir -p .deptmp
-> .deptmp/$PKG.list
+TMP=/tmp/depends
+rm -rf $TMP
+mkdir -p $TMP
+> $TMP/$PKG.list
 
 resolve_dependencies $PKG
-if [ $? == 0 ]
+if [ $? = 0 ]
 then
 	echo "$PKG has no dependencies"
 else
@@ -58,3 +58,4 @@ else
 	TOTAL=$(wc -l $PKG.list | awk '{print $1}')
 	echo "$PKG has $TOTAL packages in its tree of dependencies"
 fi
+rm -rf $TMP
