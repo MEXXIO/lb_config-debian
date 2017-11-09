@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo
 [ "$#" != 2 ] && echo -e "Usage: $(basename $0) \"user.email\" \"user.name\"\n" && exit

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 resolve_dependencies() {
 	grep -q $@ .deptmp/$PKG.list
@@ -55,6 +55,6 @@ then
 	echo "$PKG has no dependencies"
 else
 	resolve_recursively
-	TOTAL=$(cat $PKG.list | wc -l)
+	TOTAL=$(wc -l $PKG.list | awk '{print $1}')
 	echo "$PKG has $TOTAL packages in its tree of dependencies"
 fi

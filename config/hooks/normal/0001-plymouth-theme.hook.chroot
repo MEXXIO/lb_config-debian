@@ -2,7 +2,7 @@
 
 set -e
 
-if [ -e /usr/sbin/plymouth-set-default-theme ] && [ -e /usr/share/plymouth/themes/tux-plymouth-theme ]
+if [ -e /usr/sbin/plymouth-set-default-theme ] && [ -e /usr/share/plymouth/themes/script ]
 then
-	plymouth-set-default-theme tux-plymouth-theme
+	plymouth-set-default-theme script
 fi

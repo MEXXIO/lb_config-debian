@@ -95,6 +95,7 @@ patch
 pluma
 plymouth
 plymouth-label
+plymouth-themes
 powertop
 pulseaudio
 python-caja
@@ -119,4 +120,5 @@ xorg
 xscreensaver-data
 xserver-xorg-input-libinput
 xserver-xorg-input-synaptics
-xserver-xorg-video-intel
+xserver-xorg-video-fbdev
+xserver-xorg-video-vesa

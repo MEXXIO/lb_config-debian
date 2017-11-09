@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 cd $(dirname $0)
 PRESEED_CFG='config/includes.installer/preseed.cfg'
@@ -11,7 +11,7 @@ lb_MATE() {
 	./mate/mkmate.sh
 }
 lb_preseed() {
-	[ -e .local/lb.cfg ] && source .local/lb.cfg
+	[ -e .local/lb.cfg ] && . .local/lb.cfg
 	[ -n "$PRESEED_HOSTNAME" ] && [ -n "$PRESEED_USERNAME" ] &&
 		[ -n "$PRESEED_USERFULLNAME" ] && [ -n "$PRESEED_USERPASSWORD" ] &&
 			cp -f config/includes.installer/preseed.template "$PRESEED_CFG" || return
