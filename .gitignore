@@ -61,8 +61,6 @@ live-image-*.files
 live-image-*.packages
 live-image-*.zsync
 
-mate
-
 source/
 source*.iso
 source*.img

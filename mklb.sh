@@ -3,13 +3,6 @@
 cd $(dirname $0)
 PRESEED_CFG='config/includes.installer/preseed.cfg'
 
-lb_MATE() {
-	if [ ! -d mate ]
-	then
-		git clone git://github.com/unchurchable1/mate.git mate
-	fi
-	./mate/mkmate.sh
-}
 lb_preseed() {
 	[ -e .local/lb.cfg ] && . .local/lb.cfg
 	[ -n "$PRESEED_HOSTNAME" ] && [ -n "$PRESEED_USERNAME" ] &&
@@ -22,7 +15,6 @@ lb_preseed() {
 	sed -i "s|USERPASSWORD|$PRESEED_USERPASSWORD|" "$PRESEED_CFG"
 }
 
-#lb_MATE
 lb_preseed
 lb clean
 lb config
