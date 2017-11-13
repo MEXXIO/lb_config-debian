@@ -1,8 +1,9 @@
 acpid
 acpi-support
 acpitool
+adb
 alsa-utils
-android-sdk-platform-tools
+android-sdk-platform-tools-common
 apmd
 bzip2
 dconf-cli
