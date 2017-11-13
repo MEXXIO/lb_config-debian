@@ -2,19 +2,25 @@
 
 THINGS=".cache
 .config
+.dmrc
+.gitconfig
 .gnome
 .gnupg
 .ICEauthority
 .local
 .nano
 .pki
+.ssh
+.thumbnails
 .Xauthority
-.xfce4-*
-.xsession-*"
+.xfce4-session.verbose-log
+.xfce4-session.verbose-log.last
+.xsession-errors
+.xsession-errors.old"
 
-cd ~/
 for STUFF in $THINGS
 do
-	rm -rf $STUFF
+	rm -rf ~/$STUFF
 done
 
+sudo shutdown -r now
