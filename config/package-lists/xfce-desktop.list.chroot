@@ -1,5 +1,6 @@
 galculator
 gedit
+gtk3-engines-xfce
 light-locker
 pavucontrol
 ristretto
@@ -10,6 +11,7 @@ xfce4-battery-plugin
 xfce4-datetime-plugin
 xfce4-dev-tools
 xfce4-dict
+xfce4-equake-plugin
 xfce4-indicator-plugin
 xfce4-notifyd
 xfce4-power-manager

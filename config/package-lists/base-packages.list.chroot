@@ -27,8 +27,7 @@ inxi
 libasound2
 libosmesa6
 libpam-gnome-keyring
-libva-glx1
-libva-tpi1
+libva-glx2
 libvdpau-va-gl1
 libxatracker2
 lightdm

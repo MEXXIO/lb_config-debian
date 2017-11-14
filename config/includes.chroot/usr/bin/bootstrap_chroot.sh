@@ -49,7 +49,7 @@ check_host_dependencies() {
 }
 
 do_debootstrap() {
-	debootstrap --arch=amd64 --variant=buildd "$CHROOT_INCLUDES" $@ sid $CHROOT_DIR
+	debootstrap --arch=amd64 --variant=buildd $CHROOT_INCLUDES $@ sid $CHROOT_DIR
 }
 
 configure_schroot() {
