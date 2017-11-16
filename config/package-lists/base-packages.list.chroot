@@ -1,16 +1,18 @@
 adb
+airvpn
 alsa-utils
 android-sdk-platform-tools-common
 bzip2
+curl
 dconf-cli
 dconf-editor
 dosfstools
-ffmpegthumbnailer
 gdebi
 git
 gksu
 gnome-disk-utility
 gnome-keyring
+gnome-packagekit
 gnome-system-tools
 google-chrome-stable
 gufw
@@ -29,6 +31,7 @@ mesa-va-drivers
 mesa-vdpau-drivers
 mesa-vulkan-drivers
 network-manager-gnome
+openvpn
 p7zip-full
 patch
 plymouth
@@ -36,6 +39,7 @@ plymouth-label
 plymouth-themes
 pulseaudio
 python-pyside.qtgui
+resolvconf
 schroot
 seahorse
 slick-greeter
@@ -48,6 +52,7 @@ va-driver-all
 vdpau-driver-all
 vdpau-va-driver
 vlc
+whois
 xclip
 xorg
 xscreensaver-data

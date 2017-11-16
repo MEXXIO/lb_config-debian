@@ -21,4 +21,5 @@ lb config noauto \
 	--debug true \
 	--quiet false \
 	--verbose true \
+	--zsync false \
 	"${@}"

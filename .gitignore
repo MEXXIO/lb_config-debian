@@ -53,13 +53,13 @@ config/hooks/normal/0420-update-glx-alternative.hook.chroot
 config/hooks/normal/0430-update-mlocate-database.hook.chroot
 config/hooks/normal/0440-update-nvidia-alternative.hook.chroot
 
-live-image-*.iso
-live-image-*.img
-live-image-*.tar*
-live-image-*.contents
-live-image-*.files
-live-image-*.packages
-live-image-*.zsync
+*-image-*.iso
+*-image-*.img
+*-image-*.tar*
+*-image-*.contents
+*-image-*.files
+*-image-*.packages
+*-image-*.zsync
 
 source/
 source*.iso

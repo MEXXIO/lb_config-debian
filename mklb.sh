@@ -1,6 +1,8 @@
 #!/bin/sh
 
 cd $(dirname $0)
+DATE=$(date +%F)
+DESKTOP=$(git branch | awk '{print $2}')
 PRESEED_CFG='config/includes.installer/preseed.cfg'
 
 lb_preseed() {
@@ -17,10 +19,7 @@ lb_preseed() {
 
 lb_preseed
 lb clean
-lb config
-lb bootstrap
-lb chroot
-lb installer
-lb binary
+lb build
 
+mv live-image-amd64.hybrid.iso "$DESKTOP"-image-"$DATE".iso
 rm -f "$PRESEED_CFG"
