@@ -3,23 +3,31 @@
 cd $(dirname $0)
 DATE=$(date +%F)
 DESKTOP=$(git branch | awk '{print $2}')
+HOST_NAME=debian-"$DESKTOP"
 PRESEED_CFG='config/includes.installer/preseed.cfg'
 
-lb_preseed() {
-	[ -e .local/lb.cfg ] && . .local/lb.cfg
-	[ -n "$PRESEED_HOSTNAME" ] && [ -n "$PRESEED_USERNAME" ] &&
-		[ -n "$PRESEED_USERFULLNAME" ] && [ -n "$PRESEED_USERPASSWORD" ] &&
-			cp -f config/includes.installer/preseed.template "$PRESEED_CFG" || return
-
-	sed -i "s|HOSTNAME|$PRESEED_HOSTNAME|" "$PRESEED_CFG"
-	sed -i "s|USERNAME|$PRESEED_USERNAME|" "$PRESEED_CFG"
-	sed -i "s|USERFULLNAME|$PRESEED_USERFULLNAME|" "$PRESEED_CFG"
-	sed -i "s|USERPASSWORD|$PRESEED_USERPASSWORD|" "$PRESEED_CFG"
+show_usage() {
+	echo "Usage: sudo $(basename $0)"
+	exit
 }
 
+root_or_gtfo() {
+	[ $(id -u) = 0 ] || show_usage
+}
+
+lb_preseed() {
+	cp -f config/includes.installer/preseed.template "$PRESEED_CFG"
+	sed -i "s|HOSTNAME|$HOST_NAME|" "$PRESEED_CFG"
+	sed -i "s|USERNAME|$SUDO_USER|" "$PRESEED_CFG"
+}
+
+lb_finish() {
+	mv live-image-amd64.hybrid.iso "$DESKTOP"-image-"$DATE".iso
+	rm -f "$PRESEED_CFG"
+}
+
+root_or_gtfo
 lb_preseed
 lb clean
 lb build
-
-mv live-image-amd64.hybrid.iso "$DESKTOP"-image-"$DATE".iso
-rm -f "$PRESEED_CFG"
+lb_finish
