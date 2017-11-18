@@ -4,22 +4,37 @@ set -e
 
 lb config noauto \
 	--apt-recommends false \
+	--apt-source-archives true \
+	--architectures amd64 \
 	--archive-areas "main contrib non-free" \
+	--backports true \
+	--binary-filesystem fat32 \
+	--binary-images iso-hybrid \
 	--bootloaders grub-efi \
 	--cache-indices true \
+	--cache-stages "bootstrap installer" \
+	--chroot-filesystem squashfs \
 	--clean \
 	--debian-installer live \
 	--debian-installer-distribution daily \
+	--debian-installer-gui false \
 	--debug true \
 	--distribution sid \
 	--firmware-binary false \
 	--firmware-chroot false \
 	--ignore-system-defaults \
+	--iso-application "Debian Live" \
+	--iso-preparer "$SUDO_USER live-build" \
+	--iso-publisher "$SUDO_USER live-build" \
+	--iso-volume "Debian-xfce sid $(date +%Y%m%d-%H:%M)" \
 	--linux-packages "linux-image linux-headers" \
 	--loadlin false \
+	--mirror-bootstrap http://ftp.us.debian.org/debian/ \
+	--mirror-chroot http://mirrors.kernel.org/debian/ \
 	--mode debian \
 	--quiet false \
 	--source false \
+	--system live \
 	--verbose true \
 	--win32-loader false \
 	--zsync false \

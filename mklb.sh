@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd $(dirname $0)
-DATE=$(date +%F)
+DATE=$(date +%Y%m%d-%H:%M)
 DESKTOP=$(git branch | awk '{print $2}')
 HOST_NAME=debian-"$DESKTOP"
 PRESEED_CFG='config/includes.installer/preseed.cfg'
