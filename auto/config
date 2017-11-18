@@ -3,23 +3,24 @@
 set -e
 
 lb config noauto \
-	--clean \
-	--ignore-system-defaults \
-	--mode debian \
-	--debian-installer live \
-	--debian-installer-distribution daily \
-	--distribution sid \
-	--linux-packages "linux-image linux-headers" \
-	--source false \
 	--apt-recommends false \
 	--archive-areas "main contrib non-free" \
 	--bootloaders grub-efi \
+	--cache-indices true \
+	--clean \
+	--debian-installer live \
+	--debian-installer-distribution daily \
+	--debug true \
+	--distribution sid \
 	--firmware-binary false \
 	--firmware-chroot false \
+	--ignore-system-defaults \
+	--linux-packages "linux-image linux-headers" \
 	--loadlin false \
-	--win32-loader false \
-	--debug true \
+	--mode debian \
 	--quiet false \
+	--source false \
 	--verbose true \
+	--win32-loader false \
 	--zsync false \
 	"${@}"
