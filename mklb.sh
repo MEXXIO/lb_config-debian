@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 cd $(dirname $0)
 DATE=$(date +%Y%m%d-%H:%M)
@@ -27,7 +27,9 @@ lb_finish() {
 }
 
 root_or_gtfo
-lb_preseed
-lb clean
-lb build
-lb_finish
+time (
+	lb_preseed
+	lb clean
+	lb build
+	lb_finish
+)

@@ -12,7 +12,7 @@ lb config noauto \
 	--binary-images iso-hybrid \
 	--bootloaders grub-efi \
 	--cache-indices true \
-	--cache-stages "bootstrap installer" \
+	--cache-stages bootstrap \
 	--chroot-filesystem squashfs \
 	--clean \
 	--debian-installer live \
