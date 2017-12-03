@@ -6,7 +6,9 @@ bzip2
 curl
 dconf-cli
 dconf-editor
+dnsutils
 dosfstools
+fakeroot
 gdebi
 git
 gksu
@@ -16,9 +18,11 @@ gnome-packagekit
 gnome-system-tools
 google-chrome-stable
 gufw
+hddtemp
 hwinfo
 i965-va-driver
 inxi
+kernel-package
 libasound2
 libosmesa6
 libpam-gnome-keyring
@@ -27,6 +31,8 @@ libvdpau-va-gl1
 libxatracker2
 lightdm
 live-build
+lm-sensors
+mesa-utils
 mesa-va-drivers
 mesa-vdpau-drivers
 mesa-vulkan-drivers
@@ -47,7 +53,9 @@ software-properties-gtk
 sound-theme-freedesktop
 synaptic
 transmission-gtk
+tree
 unzip
+usbutils
 va-driver-all
 vdpau-driver-all
 vdpau-va-driver
