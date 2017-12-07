@@ -29,7 +29,6 @@ libpam-gnome-keyring
 libva-glx2
 libvdpau-va-gl1
 libxatracker2
-lightdm
 live-build
 lm-sensors
 mesa-utils
@@ -48,7 +47,6 @@ python-pyside.qtgui
 resolvconf
 schroot
 seahorse
-slick-greeter
 software-properties-gtk
 sound-theme-freedesktop
 synaptic
