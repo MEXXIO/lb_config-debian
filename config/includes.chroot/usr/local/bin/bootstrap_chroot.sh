@@ -1,9 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
-CHROOT_DIR=/srv/chroot/sid
-CHROOT_INCLUDES=
-CHROOT_TARBALL=/srv/chroot/chroot-sid.tgz
-HOST_DEPENDS="debootstrap schroot"
+ARCH=amd64
+OPTIONS=
+SUITE=sid
+ALIAS=unstable
+TARGET=/srv/chroot/$SUITE
+TARBALL=/srv/chroot/chroot-$SUITE.tgz
+MIRROR=http://ftp.us.debian.org/debian/
+DEPENDS="debootstrap schroot"
 
 show_usage() {
 	echo "Usage: sudo $(basename $0) [<base-packages.list>]"
@@ -22,7 +26,7 @@ check_arguments() {
 		1)
 			if [ -e $1 ]
 			then
-				CHROOT_INCLUDES="--include=$(cat $1)"
+				OPTIONS="--include=$(cat $1)"
 				return
 			fi
 			;;
@@ -42,48 +46,54 @@ install_quietly() {
 }
 
 check_host_dependencies() {
-	for DEP in $HOST_DEPENDS
+	for DEP in $DEPENDS
 	do
 		is_installed $DEP || install_quietly $DEP
 	done
 }
 
 do_debootstrap() {
-	debootstrap --arch=amd64 --variant=buildd $CHROOT_INCLUDES $@ sid $CHROOT_DIR
+	debootstrap --arch=$ARCH \
+		--variant=buildd \
+		$OPTIONS \
+		$@ \
+		$SUITE \
+		$TARGET \
+		$MIRROR
 }
 
 configure_schroot() {
 	cp /etc/schroot/schroot.conf /etc/schroot/schroot.conf.orig
 	cat > /etc/schroot/schroot.conf << EOF
-[sid]
-description=Debian sid (unstable)
-directory=$CHROOT_DIR
+[$SUITE]
+description=Debian $SUITE ($ALIAS)
+directory=$TARGET
 users=$SUDO_USER
 groups=sbuild
 root-groups=root
-aliases=unstable,default
+aliases=$ALIAS,default
 EOF
 }
 
 setup_chroot() {
-	if [ -e $CHROOT_DIR/.bootstrapped ]
+	if [ -e $TARGET/.bootstrapped ]
 	then
-		echo "A chroot environment is already configured in $CHROOT_DIR"
+		echo "A chroot environment is already configured in $TARGET"
 	else
-		echo "Setting up chroot in $CHROOT_DIR"
-		mkdir -p $CHROOT_DIR
+		echo "Setting up chroot in $TARGET"
+		mkdir -p $TARGET
 
-		if [ ! -e $CHROOT_TARBALL ]
+		if [ ! -e $TARBALL ]
 		then
-			do_debootstrap "--download-only --make-tarball=$CHROOT_TARBALL"
+			do_debootstrap "--download-only --make-tarball=$TARBALL"
 		fi
-		do_debootstrap "--unpack-tarball=$CHROOT_TARBALL"
+		do_debootstrap "--unpack-tarball=$TARBALL"
 
-		touch $CHROOT_DIR/.bootstrapped
+		touch $TARGET/.bootstrapped
 	fi
 
-	schroot -l 2>/dev/null | fgrep -q 'chroot:sid' && \
-		schroot -i 2>/dev/null | fgrep -q $CHROOT_DIR
+	schroot -l 2>/dev/null | fgrep -q "chroot:$SUITE" && \
+		schroot -i 2>/dev/null | fgrep -q $TARGET
 	if [ $? != 0 ]
 	then
 		echo "Configuring schroot"
@@ -95,6 +105,8 @@ setup_chroot() {
 }
 
 root_or_gtfo
-check_arguments $@
-check_host_dependencies
-setup_chroot
+time (
+	check_arguments $@
+	check_host_dependencies
+	setup_chroot
+)
