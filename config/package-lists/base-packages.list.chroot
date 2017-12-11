@@ -15,13 +15,13 @@ gksu
 gnome-disk-utility
 gnome-keyring
 gnome-packagekit
-gnome-system-tools
 google-chrome-stable
 gufw
 hddtemp
 hwinfo
 i965-va-driver
 inxi
+jstest-gtk
 kernel-package
 libasound2
 libosmesa6
@@ -31,10 +31,12 @@ libvdpau-va-gl1
 libxatracker2
 live-build
 lm-sensors
+mednaffe
 mesa-utils
 mesa-va-drivers
 mesa-vdpau-drivers
 mesa-vulkan-drivers
+mupen64plus-qt
 network-manager-gnome
 openvpn
 p7zip-full
@@ -42,6 +44,7 @@ patch
 plymouth
 plymouth-label
 plymouth-themes
+powermgmt-base
 pulseaudio
 python-pyside.qtgui
 resolvconf
