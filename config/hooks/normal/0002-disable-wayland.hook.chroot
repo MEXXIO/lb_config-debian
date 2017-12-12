@@ -1,8 +1,0 @@
-#!/bin/sh
-
-set -e
-
-if [ -e /etc/gdm3/daemon.conf ]
-then
-	sed -i 's|.*WaylandEnable=.*$|WaylandEnable=false|' /etc/gdm3/daemon.conf
-fi
