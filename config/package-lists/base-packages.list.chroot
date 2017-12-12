@@ -24,6 +24,7 @@ inxi
 jstest-gtk
 kernel-package
 libasound2
+libgtk2-perl
 libosmesa6
 libpam-gnome-keyring
 libva-glx2
@@ -65,7 +66,6 @@ whois
 xclip
 xorg
 xserver-xorg-input-libinput
-xserver-xorg-input-synaptics
 xserver-xorg-video-fbdev
 xserver-xorg-video-vesa
 xz-utils
