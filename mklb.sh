@@ -22,7 +22,9 @@ lb_preseed() {
 }
 
 lb_finish() {
+	echo -e '\nDone!\n'
 	mv live-image-amd64.hybrid.iso "$DESKTOP"-image-"$DATE".iso
+	ls -lh "$DESKTOP"-image-"$DATE".iso
 	rm -f "$PRESEED_CFG"
 }
 
