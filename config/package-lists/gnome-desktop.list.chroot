@@ -11,12 +11,10 @@ gnome-applets
 gnome-backgrounds
 gnome-calculator
 gnome-characters
-gnome-clocks
 gnome-color-manager
 gnome-control-center
 gnome-dictionary
 gnome-font-viewer
-gnome-getting-started-docs
 gnome-logs
 gnome-menus
 gnome-panel
@@ -29,7 +27,6 @@ gnome-system-monitor
 gnome-terminal
 gnome-themes-standard
 gnome-tweak-tool
-gnome-user-docs
 gnome-user-share
 gnome-video-effects
 gnome-weather
