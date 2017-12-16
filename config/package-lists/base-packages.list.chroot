@@ -9,6 +9,7 @@ dconf-editor
 desmume
 dnsutils
 dosfstools
+eject
 fakeroot
 gdebi
 git
@@ -24,10 +25,14 @@ gufw
 hddtemp
 hwinfo
 i965-va-driver
+i965-va-driver-shaders
 inxi
 jstest-gtk
 kernel-package
 libasound2
+libcanberra-gtk-module
+libcanberra-gtk3-module
+libcanberra-pulse
 libgtk2-perl
 libosmesa6
 libpam-gnome-keyring
@@ -59,9 +64,11 @@ seahorse
 slick-greeter
 software-properties-gtk
 sound-theme-freedesktop
+squashfs-tools
 synaptic
 transmission-gtk
 tree
+unrar
 unzip
 usbutils
 va-driver-all
@@ -76,3 +83,4 @@ xserver-xorg-input-libinput
 xserver-xorg-video-fbdev
 xserver-xorg-video-vesa
 xz-utils
+zip
