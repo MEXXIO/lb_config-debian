@@ -12,6 +12,7 @@ gnome-characters
 gnome-color-manager
 gnome-control-center
 gnome-dictionary
+gnome-flashback
 gnome-font-viewer
 gnome-logs
 gnome-menus
@@ -19,6 +20,7 @@ gnome-panel
 gnome-screensaver
 gnome-screenshot
 gnome-session
+gnome-session-flashback
 gnome-shell-extensions
 gnome-sushi
 gnome-system-monitor
