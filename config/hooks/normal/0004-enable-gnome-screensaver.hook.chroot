@@ -1,8 +1,0 @@
-#!/bin/sh
-
-set -e
-
-if [ -e /etc/xdg/autostart/gnome-screensaver.desktop ]
-then
-	sed -i 's|OnlyShowIn=.*$|OnlyShowIn=GNOME;|' /etc/xdg/autostart/gnome-screensaver.desktop
-fi
