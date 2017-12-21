@@ -78,7 +78,6 @@ vlc
 whois
 xclip
 xorg
-xserver-xorg-input-joystick
 xserver-xorg-input-libinput
 xserver-xorg-video-fbdev
 xserver-xorg-video-vesa
