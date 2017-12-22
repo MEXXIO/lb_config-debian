@@ -26,7 +26,7 @@ lb config noauto \
 	--iso-application "Debian Live" \
 	--iso-preparer "$SUDO_USER live-build" \
 	--iso-publisher "$SUDO_USER live-build" \
-	--iso-volume "Debian-$(git branch | grep '*' | awk '{print $2}') sid $(date +%Y%m%d-%H:%M)" \
+	--iso-volume "Debian-$(git branch | grep '*' | awk '{print $2}') sid $(date +%Y%m%d)" \
 	--linux-packages "linux-image linux-headers" \
 	--loadlin false \
 	--mirror-bootstrap http://ftp.us.debian.org/debian/ \
