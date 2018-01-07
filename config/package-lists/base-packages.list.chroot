@@ -36,6 +36,7 @@ libasound2
 libcanberra-gtk3-module
 libcanberra-gtk-module
 libcanberra-pulse
+libelf-dev
 libgtk2-perl
 libosmesa6
 libpam-gnome-keyring
@@ -72,6 +73,8 @@ squashfs-tools
 synaptic
 transmission-gtk
 tree
+tumbler
+tumbler-plugins-extra
 unrar
 unzip
 usbutils
