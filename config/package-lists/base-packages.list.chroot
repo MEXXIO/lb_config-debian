@@ -81,6 +81,7 @@ usbutils
 va-driver-all
 vdpau-driver-all
 vdpau-va-driver
+virtualbox-qt
 vlc
 whois
 xclip
