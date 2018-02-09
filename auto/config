@@ -18,6 +18,7 @@ lb config noauto \
 	--debian-installer live \
 	--debian-installer-distribution daily \
 	--debian-installer-gui false \
+	--debootstrap-options --include=gnupg2 \
 	--debug true \
 	--distribution sid \
 	--firmware-binary false \
