@@ -5,3 +5,4 @@ grub2-common
 grub-common
 grub-efi-amd64
 grub-efi-amd64-bin
+os-prober

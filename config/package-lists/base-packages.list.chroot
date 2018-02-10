@@ -3,6 +3,7 @@ airvpn
 alsa-utils
 android-sdk-platform-tools-common
 bzip2
+chromium
 curl
 dconf-cli
 dconf-editor
@@ -11,6 +12,7 @@ dnsutils
 dosfstools
 eject
 fakeroot
+fbreader
 gdebi
 git
 gksu
