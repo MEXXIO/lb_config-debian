@@ -43,6 +43,7 @@ libgtk2-perl
 libosmesa6
 libpam-gnome-keyring
 libreoffice-writer
+libssl-dev
 libva-glx2
 libvdpau-va-gl1
 libxatracker2
