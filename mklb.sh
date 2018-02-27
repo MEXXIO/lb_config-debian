@@ -15,6 +15,17 @@ root_or_gtfo() {
 	[ $(id -u) = 0 ] || show_usage
 }
 
+fetch_packages() {
+    for PKG in $(cat config/packages.chroot/packages.chroot.list | grep -v '#')
+    do
+        FN=$(basename $PKG)
+        if [ ! -e config/packages.chroot/$FN ]
+        then
+            wget -q $PKG -O config/packages.chroot/$FN
+        fi
+    done
+}
+
 lb_preseed() {
 	cp -f config/includes.installer/preseed.template "$PRESEED_CFG"
 	sed -i "s|HOSTNAME|$HOST_NAME|" "$PRESEED_CFG"
@@ -29,6 +40,8 @@ lb_finish() {
 }
 
 root_or_gtfo
+fetch_packages
+
 time (
 	lb_preseed
 	lb clean

@@ -28,7 +28,7 @@ config/control
 
 config/includes.installer/preseed.cfg
 
-config/packages.chroot
+config/packages.chroot/*.deb
 
 config/hooks/live/
 config/hooks/normal/0020-create-mtab-symlink.hook.chroot
