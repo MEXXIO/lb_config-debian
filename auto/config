@@ -11,7 +11,6 @@ lb config noauto \
 	--binary-filesystem fat32 \
 	--binary-images iso-hybrid \
 	--bootloaders grub-efi \
-	--cache-indices true \
 	--cache-stages bootstrap \
 	--chroot-filesystem squashfs \
 	--clean \
