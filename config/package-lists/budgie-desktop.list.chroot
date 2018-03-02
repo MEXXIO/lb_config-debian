@@ -30,6 +30,7 @@ gvfs-bin
 gvfs-fuse
 nautilus
 nautilus-admin
+nautilus-compare
 nautilus-gtkhash
 nautilus-hide
 nautilus-image-converter
