@@ -42,6 +42,7 @@ libcanberra-gtk-module
 libcanberra-pulse
 libelf-dev
 libgtk2-perl
+libgtk3-perl
 libosmesa6
 libpam-gnome-keyring
 libreoffice-writer
