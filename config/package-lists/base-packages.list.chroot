@@ -70,6 +70,7 @@ plymouth-label
 plymouth-themes
 powermgmt-base
 pulseaudio
+python-gtk2
 python-pyside.qtgui
 resolvconf
 schroot
