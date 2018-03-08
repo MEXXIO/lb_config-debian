@@ -1,4 +1,5 @@
 efibootmgr
+firmware-atheros
 firmware-misc-nonfree
 firmware-realtek
 grub2-common
