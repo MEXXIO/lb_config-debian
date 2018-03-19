@@ -14,6 +14,7 @@ dosfstools
 eject
 fakeroot
 fbreader
+ffmpeg
 gdebi
 git
 gksu
@@ -54,14 +55,17 @@ libxatracker2
 lightdm
 live-build
 lm-sensors
+mediainfo
 mednaffe
 meld
+mencoder
 mesa-utils
 mesa-va-drivers
 mesa-vdpau-drivers
 mesa-vulkan-drivers
 mupen64plus-qt
 network-manager-gnome
+openjdk-9-jre
 openvpn
 p7zip-full
 patch
