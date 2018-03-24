@@ -16,7 +16,6 @@ fbreader
 ffmpeg
 gdebi
 git
-gksu
 gnome-disk-utility
 gnome-keyring
 gnome-packagekit
@@ -32,7 +31,6 @@ gstreamer1.0-pulseaudio
 gufw
 hddtemp
 hwinfo
-i965-va-driver
 i965-va-driver-shaders
 inxi
 jstest-gtk
