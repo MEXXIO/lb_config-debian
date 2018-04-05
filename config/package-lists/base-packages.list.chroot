@@ -40,6 +40,7 @@ libcanberra-gtk3-module
 libcanberra-gtk-module
 libcanberra-pulse
 libelf-dev
+libgdk-pixbuf2.0-bin
 libgtk2-perl
 libgtk3-perl
 libosmesa6
