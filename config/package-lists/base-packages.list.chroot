@@ -1,5 +1,4 @@
 adb
-airvpn
 alsa-utils
 android-sdk-platform-tools
 bison
@@ -12,6 +11,7 @@ dconf-editor
 desmume
 dnsutils
 dosfstools
+eddie-ui
 eject
 fakeroot
 fbreader
