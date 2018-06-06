@@ -16,6 +16,7 @@ root_or_gtfo() {
 }
 
 fetch_packages() {
+    [ -e config/packages.chroot/packages.chroot.list ] || return
     for PKG in $(cat config/packages.chroot/packages.chroot.list | grep -v '#')
     do
         FN=$(basename $PKG)
