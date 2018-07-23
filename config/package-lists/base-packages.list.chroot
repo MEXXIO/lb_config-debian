@@ -38,6 +38,7 @@ hddtemp
 heimdall-flash-frontend
 hwinfo
 i965-va-driver-shaders
+idle
 inxi
 jstest-gtk
 kernel-package
