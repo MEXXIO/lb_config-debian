@@ -65,7 +65,6 @@ powermgmt-base
 pulseaudio
 python-gtk2
 python-pyside.qtgui
-resolvconf
 schroot
 seahorse
 slick-greeter
