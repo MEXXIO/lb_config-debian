@@ -1,6 +1,7 @@
 adb
 alsa-utils
 android-sdk-platform-tools-common
+at-spi2-core
 bzip2
 curl
 dconf-cli
@@ -72,6 +73,7 @@ software-properties-gtk
 sound-theme-freedesktop
 squashfs-tools
 synaptic
+tracker
 transmission-gtk
 tree
 tumbler
