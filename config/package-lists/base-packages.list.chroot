@@ -2,6 +2,7 @@ adb
 alsa-utils
 android-sdk-platform-tools-common
 at-spi2-core
+bison
 bzip2
 curl
 dconf-cli
@@ -12,6 +13,7 @@ eddie-ui
 eject
 fakeroot
 fbreader
+flex
 gdebi
 git
 gnome-disk-utility
@@ -87,6 +89,7 @@ vlc
 whois
 xclip
 xorg
+xdg-user-dirs
 xserver-xorg-input-libinput
 xserver-xorg-video-radeon
 xz-utils
