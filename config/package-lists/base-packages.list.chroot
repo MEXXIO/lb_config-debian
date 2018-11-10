@@ -10,7 +10,6 @@ dconf-editor
 dnsutils
 dosfstools
 eddie-ui
-eject
 fakeroot
 fbreader
 flex
@@ -24,8 +23,6 @@ gstreamer1.0-plugins-bad
 gstreamer1.0-plugins-good
 gstreamer1.0-plugins-ugly
 gstreamer1.0-pulseaudio
-gufw
-hddtemp
 hwinfo
 idle
 inxi
