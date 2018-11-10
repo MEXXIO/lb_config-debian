@@ -14,11 +14,9 @@ eject
 fakeroot
 fbreader
 flex
-gdebi
 git
 gnome-disk-utility
 gnome-keyring
-gnome-packagekit
 google-chrome-stable
 google-earth-pro-stable
 gstreamer1.0-libav
