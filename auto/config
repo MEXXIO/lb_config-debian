@@ -30,7 +30,7 @@ lb config noauto \
 	--linux-packages "linux-image linux-headers" \
 	--loadlin false \
 	--mirror-bootstrap http://ftp.us.debian.org/debian/ \
-	--mirror-chroot http://mirrors.kernel.org/debian/ \
+	--mirror-chroot http://mirrors.edge.kernel.org/debian/ \
 	--mode debian \
 	--quiet false \
 	--source false \
