@@ -12,6 +12,7 @@ dosfstools
 eddie-ui
 fakeroot
 fbreader
+ffmpeg
 flex
 git
 gnome-disk-utility
@@ -45,7 +46,9 @@ libxatracker2
 lightdm
 live-build
 lm-sensors
+mediainfo
 meld
+mencoder
 mesa-utils
 mesa-va-drivers
 mesa-vdpau-drivers
