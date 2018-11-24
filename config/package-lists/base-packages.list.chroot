@@ -51,6 +51,7 @@ mesa-va-drivers
 mesa-vdpau-drivers
 mesa-vulkan-drivers
 network-manager-gnome
+openjdk-8-jre
 openvpn
 p7zip-full
 patch
