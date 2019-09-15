@@ -9,7 +9,7 @@ alias mkdir='mkdir -p'
 
 alias h='history'
 alias j='jobs -l'
-alias which='type -a'
+#alias which='type -a'
 alias ..='cd ..'
 
 # Pretty-print of some PATH variables:
