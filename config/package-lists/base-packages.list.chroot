@@ -4,6 +4,7 @@ android-sdk-platform-tools-common
 at-spi2-core
 bison
 bzip2
+cowsay
 curl
 dconf-cli
 dconf-editor
@@ -15,6 +16,7 @@ fastboot
 fbreader
 ffmpeg
 flex
+fortunes-off
 ghostscript
 git
 gnome-disk-utility
@@ -26,6 +28,7 @@ gstreamer1.0-plugins-bad
 gstreamer1.0-plugins-good
 gstreamer1.0-plugins-ugly
 gstreamer1.0-pulseaudio
+haskell-misfortune
 hwinfo
 idle
 inxi
@@ -48,6 +51,7 @@ libxatracker2
 lightdm
 live-build
 lm-sensors
+lolcat
 mediainfo
 meld
 mencoder
@@ -91,8 +95,8 @@ vdpau-va-driver
 vlc
 whois
 xclip
-xorg
 xdg-user-dirs
+xorg
 xserver-xorg-input-libinput
 xserver-xorg-video-radeon
 xz-utils

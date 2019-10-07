@@ -41,3 +41,5 @@ alias ll='ls -vl'
 alias la='ls -vA'
 alias l='ls -vCF'
 
+# offensive rainbow cow
+misfortune --offensive | cowsay | lolcat
