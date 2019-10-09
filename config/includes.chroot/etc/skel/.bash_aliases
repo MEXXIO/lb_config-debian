@@ -1,4 +1,4 @@
-PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/local/games:/usr/sbin:/usr/bin:/usr/games:/sbin:/bin"
 export PATH
 
 alias rm='rm -i'
@@ -9,7 +9,7 @@ alias mkdir='mkdir -p'
 
 alias h='history'
 alias j='jobs -l'
-alias which='type -a'
+#alias which='type -a'
 alias ..='cd ..'
 
 # Pretty-print of some PATH variables:
@@ -24,9 +24,9 @@ alias ps='ps ax'
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
+    alias ls='ls -v --color=auto'
+    alias dir='dir -v --color=auto'
+    alias vdir='vdir -v --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -37,7 +37,9 @@ fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='ls -vl'
+alias la='ls -vA'
+alias l='ls -vCF'
 
+# offensive rainbow cow
+misfortune --offensive | cowsay | lolcat

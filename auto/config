@@ -3,22 +3,39 @@
 set -e
 
 lb config noauto \
+	--apt-recommends false \
+	--apt-source-archives true \
+	--architectures amd64 \
+	--archive-areas "main contrib non-free" \
+	--backports true \
+	--binary-filesystem fat32 \
+	--binary-images iso-hybrid \
+	--bootloaders grub-efi \
+	--cache-stages bootstrap \
+	--chroot-filesystem squashfs \
 	--clean \
-	--ignore-system-defaults \
-	--mode debian \
 	--debian-installer live \
 	--debian-installer-distribution daily \
+	--debian-installer-gui false \
+	--debootstrap-options --include=gnupg2 \
+	--debug true \
 	--distribution sid \
-	--linux-packages "linux-image linux-headers" \
-	--source false \
-	--apt-recommends false \
-	--archive-areas "main contrib non-free" \
-	--bootloaders grub-efi \
 	--firmware-binary false \
 	--firmware-chroot false \
+	--ignore-system-defaults \
+	--iso-application "Debian Live" \
+	--iso-preparer "$SUDO_USER live-build" \
+	--iso-publisher "$SUDO_USER live-build" \
+	--iso-volume "Debian-$(git branch | grep '*' | awk '{print $2}') sid $(date +%Y%m%d)" \
+	--linux-packages "linux-image linux-headers" \
 	--loadlin false \
-	--win32-loader false \
-	--debug true \
+	--mirror-bootstrap http://ftp.us.debian.org/debian/ \
+	--mirror-chroot http://mirrors.edge.kernel.org/debian/ \
+	--mode debian \
 	--quiet false \
+	--source false \
+	--system live \
 	--verbose true \
+	--win32-loader false \
+	--zsync false \
 	"${@}"

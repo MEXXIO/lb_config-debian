@@ -20,8 +20,6 @@ gir1.2-mate-polkit
 gir1.2-notify-0.7
 gir1.2-peas-1.0
 gir1.2-pluma-1.0
-libcanberra-gtk3-module
-libgtk2-perl
 libmatekbd4
 libmatemixer0
 libmateweather1

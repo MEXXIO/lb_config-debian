@@ -1,34 +1,51 @@
-#!/bin/sh
+#!/bin/bash
 
 cd $(dirname $0)
+DATE=$(date +%Y%m%d)
+DESKTOP=$(git branch | grep '*' | awk '{print $2}')
+HOST_NAME=debian-"$DESKTOP"
 PRESEED_CFG='config/includes.installer/preseed.cfg'
 
-lb_MATE() {
-	if [ ! -d mate ]
-	then
-		git clone git://github.com/unchurchable1/mate.git mate
-	fi
-	./mate/mkmate.sh
+show_usage() {
+	echo "Usage: sudo $(basename $0)"
+	exit
 }
+
+root_or_gtfo() {
+	[ $(id -u) = 0 ] || show_usage
+}
+
+fetch_packages() {
+    [ -e config/packages.chroot/packages.chroot.list ] || return
+    for PKG in $(cat config/packages.chroot/packages.chroot.list | grep -v '#')
+    do
+        FN=$(basename $PKG)
+        if [ ! -e config/packages.chroot/$FN ]
+        then
+            wget -q $PKG -O config/packages.chroot/$FN
+        fi
+    done
+}
+
 lb_preseed() {
-	[ -e .local/lb.cfg ] && . .local/lb.cfg
-	[ -n "$PRESEED_HOSTNAME" ] && [ -n "$PRESEED_USERNAME" ] &&
-		[ -n "$PRESEED_USERFULLNAME" ] && [ -n "$PRESEED_USERPASSWORD" ] &&
-			cp -f config/includes.installer/preseed.template "$PRESEED_CFG" || return
-
-	sed -i "s|HOSTNAME|$PRESEED_HOSTNAME|" "$PRESEED_CFG"
-	sed -i "s|USERNAME|$PRESEED_USERNAME|" "$PRESEED_CFG"
-	sed -i "s|USERFULLNAME|$PRESEED_USERFULLNAME|" "$PRESEED_CFG"
-	sed -i "s|USERPASSWORD|$PRESEED_USERPASSWORD|" "$PRESEED_CFG"
+	cp -f config/includes.installer/preseed.template "$PRESEED_CFG"
+	sed -i "s|HOSTNAME|$HOST_NAME|" "$PRESEED_CFG"
+	sed -i "s|USERNAME|$SUDO_USER|" "$PRESEED_CFG"
 }
 
-#lb_MATE
-lb_preseed
-lb clean
-lb config
-lb bootstrap
-lb chroot
-lb installer
-lb binary
+lb_finish() {
+	echo -e '\nDone!\n'
+	mv live-image-amd64.hybrid.iso "$DESKTOP"-image-"$DATE".iso
+	ls -lh "$DESKTOP"-image-"$DATE".iso
+	rm -f "$PRESEED_CFG"
+}
 
-rm -f "$PRESEED_CFG"
+root_or_gtfo
+fetch_packages
+
+time (
+	lb_preseed
+	lb clean
+	lb build
+	lb_finish
+)
