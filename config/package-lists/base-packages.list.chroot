@@ -39,7 +39,6 @@ libcanberra-gtk-module
 libcanberra-pulse
 libelf-dev
 libgdk-pixbuf2.0-bin
-libgtk2-perl
 libgtk3-perl
 libosmesa6
 libpam-gnome-keyring
@@ -72,7 +71,7 @@ pulseaudio
 pylint3
 python3-pip
 python-gtk2
-python-pyside.qtgui
+python-pyside2.qtgui
 schroot
 seahorse
 slick-greeter
@@ -91,7 +90,6 @@ unzip
 usbutils
 va-driver-all
 vdpau-driver-all
-vdpau-va-driver
 vlc
 whois
 xclip
