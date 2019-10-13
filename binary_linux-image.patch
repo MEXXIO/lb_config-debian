@@ -1,0 +1,14 @@
+--- /usr/lib/live/build/binary_linux-image
++++ /usr/lib/live/build/binary_linux-image
+@@ -69,8 +69,9 @@ Check_multiarchitectures
+ mkdir -p "${DESTDIR}"
+ 
+ # Installing linux-image
+-cp chroot/boot/"${LINUX}"-* "${DESTDIR}"
+-cp chroot/boot/initrd.img-* "${DESTDIR}" 2>&1 || Echo_message "Skip installing missing initrd."
++# FIXIT - unchurchable1
++cp chroot/boot/"${LINUX}"-* "${DESTDIR}"/"${LINUX}"
++cp chroot/boot/initrd.img-* "${DESTDIR}"/initrd.img 2>&1 || Echo_message "Skip installing missing initrd."
+ 
+ case "${LB_INITRAMFS}" in
+ 	live-boot)

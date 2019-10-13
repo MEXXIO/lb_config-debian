@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd $(dirname $0)
+WORK=$(pwd)
 DATE=$(date +%Y%m%d)
 DESKTOP=$(git branch | grep '*' | awk '{print $2}')
 HOST_NAME=debian-"$DESKTOP"
@@ -27,6 +28,20 @@ fetch_packages() {
     done
 }
 
+apply_patches() {
+    for PATCH in *.patch
+    do
+        FILE=$(echo $PATCH | sed 's|.patch||')
+        grep -q "FIXIT - unchurchable1" /usr/lib/live/build/$FILE
+        if [ $? != 0 ]
+        then
+            cd /
+            patch -p0 < $WORK/$PATCH
+            cd $WORK
+        fi
+    done
+}
+
 lb_preseed() {
 	cp -f config/includes.installer/preseed.template "$PRESEED_CFG"
 	sed -i "s|HOSTNAME|$HOST_NAME|" "$PRESEED_CFG"
@@ -42,6 +57,7 @@ lb_finish() {
 
 root_or_gtfo
 fetch_packages
+apply_patches
 
 time (
 	lb_preseed
