@@ -3,6 +3,7 @@ alsa-utils
 android-sdk-platform-tools-common
 at-spi2-core
 bison
+black
 bzip2
 cowsay
 curl
@@ -69,11 +70,15 @@ plymouth-label
 plymouth-themes
 powermgmt-base
 pulseaudio
+pycodestyle
+pydocstyle
 pylint3
 python3-numpy
 python3-pip
+python3-pytest
 python-gtk2
 python-pyside2.qtgui
+python-pytest
 schroot
 seahorse
 slick-greeter
