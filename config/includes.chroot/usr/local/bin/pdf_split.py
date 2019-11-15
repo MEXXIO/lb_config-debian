@@ -1,45 +1,63 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
-"""Use Ghostscript to split a pdf file into individual chapter files.
+"""Use Ghostscript to split a pdf file into individual sections.
+
+This script assumes that you have python3, the python3-numpy module, and
+Ghostscript installed.
 
 Accept a pdf file as input and split it into individual pdf files containing
-each chapter, using page number boundaries defined by the user.
+each part, using section names and page number boundaries defined by the user.
 
 There must be a file with the same name as the source pdf file with the file
 extension ".pages" in the same directory as the source file, eg: a source file
 named Book.pdf needs a corresponding ".pages" file named Book.pdf.pages. The
-".pages" file should contain the first and last pages of each chapter of the
-book in the following format:
+".pages" file should contain the name of each section with the first and last
+pages of that section in the following format:
 
-1, 20
-21, 45
-46, 75
+Chapter-1, 1, 20
+Chapter-2, 21, 45
+Chapter-3, 46, 75
+Glossary, 76, 80
 """
 
 
-from os import system
+from os import path, system
 from sys import argv
 
 from numpy import genfromtxt
 
 
 def pdf_split(pdf_source_file):
-    """Use Ghostscript to split a pdf file into individual chapter files."""
-    gs_options = "-sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -q"
+    """Use Ghostscript to split a pdf file into individual parts."""
+    if not path.exists(pdf_source_file):
+        quit("The pdf file " + pdf_source_file + " does not exist!")
 
-    pages = genfromtxt(pdf_source_file + ".pages", dtype="int", delimiter=",")
+    pages_file = pdf_source_file + ".pages"
+    if not path.exists(pages_file):
+        quit("The pages file " + pages_file + " does not exist!")
 
+    print("Splitting pdf file: " + pdf_source_file)
+
+    pages = genfromtxt(pages_file, dtype="str", delimiter=", ")
     index = 0
     while index < len(pages):
-        first_page = str(pages[index][0])
-        last_page = str(pages[index][1])
-        pdf_destination_file = "Chapter-" + str(index + 1) + ".pdf "
+        pdf_destination_file = pages[index][0] + ".pdf "
+        first_page = pages[index][1]
+        last_page = pages[index][2]
         index += 1
 
-        gs_command = (
-            "gs "
-            + gs_options
+        print(
+            "Splitting pages "
+            + first_page
+            + " to "
+            + last_page
+            + " into file: "
+            + pdf_destination_file
+        )
+
+        system(
+            "gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -q"
             + " -dFirstPage="
             + first_page
             + " -dLastPage="
@@ -49,8 +67,6 @@ def pdf_split(pdf_source_file):
             + pdf_source_file
             + " 2>/dev/null"
         )
-        print(gs_command)
-        system(gs_command)
 
 
 if __name__ == "__main__":
