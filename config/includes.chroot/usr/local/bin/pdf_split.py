@@ -30,22 +30,26 @@ from numpy import genfromtxt
 
 def pdf_split(pdf_source_file):
     """Use Ghostscript to split a pdf file into individual parts."""
-    if not path.exists(pdf_source_file):
-        quit("The pdf file " + pdf_source_file + " does not exist!")
+    if not path.isfile(pdf_source_file):
+        quit(f"The pdf file {pdf_source_file} does not exist!")
 
     pages_file = pdf_source_file + ".pages"
-    if not path.exists(pages_file):
-        quit("The pages file " + pages_file + " does not exist!")
+    if not path.isfile(pages_file):
+        quit(f"The pages file {pages_file} does not exist!")
 
-    print("Splitting pdf file: " + pdf_source_file)
+    print(f"Splitting pdf file: {pdf_source_file}")
 
     pages = genfromtxt(pages_file, dtype="str", delimiter=", ")
     index = 0
     while index < len(pages):
-        pdf_destination_file = pages[index][0] + ".pdf "
+        pdf_destination_file = pages[index][0] + ".pdf"
         first_page = pages[index][1]
         last_page = pages[index][2]
         index += 1
+
+        if path.isfile(pdf_destination_file):
+            print(f"The pdf file {pdf_destination_file} already exists.")
+            continue
 
         print(
             "Splitting pages "
@@ -64,6 +68,7 @@ def pdf_split(pdf_source_file):
             + last_page
             + " -sOutputFile="
             + pdf_destination_file
+            + " "
             + pdf_source_file
             + " 2>/dev/null"
         )
