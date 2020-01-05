@@ -77,8 +77,7 @@ python3-numpy
 python3-pip
 python3-pytest
 python-gtk2
-python-pyside2.qtgui
-python-pytest
+python3-pyside2.qtgui
 schroot
 seahorse
 slick-greeter
