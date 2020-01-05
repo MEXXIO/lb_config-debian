@@ -1,9 +1,18 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
 
-import sys
+"""Print a random number."""
+
+from sys import argv
 from random import randint
 
-if len(sys.argv) == 3:
-    n = [int(sys.argv[1]), int(sys.argv[2])]
-    if n[0] >= 0 and n[1] > n[0]:
-        print(randint(n[0], n[1]))
+
+def rando(low, high):
+    """Print a random number between low and high."""
+    if high > low >= 0:
+        print(randint(low, high))
+
+
+if __name__ == "__main__":
+    if len(argv) == 3:
+        rando(int(argv[1]), int(argv[2]))
