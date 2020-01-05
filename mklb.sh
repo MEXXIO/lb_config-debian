@@ -29,9 +29,10 @@ fetch_packages() {
 }
 
 apply_patches() {
-    for PATCH in *.patch
+    [ -d config/patches ] || return
+    for PATCH in config/patches/*.patch
     do
-        FILE=$(echo $PATCH | sed 's|.patch||')
+        FILE=$(echo $PATCH | sed 's|config/patches/||' | sed 's|.patch||')
         grep -q "FIXIT - unchurchable1" /usr/lib/live/build/$FILE
         if [ $? != 0 ]
         then
