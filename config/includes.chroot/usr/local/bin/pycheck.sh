@@ -6,10 +6,10 @@ pycheck()
     local FILE="$1"
     REPORT=$(echo "$FILE" | sed 's|.py||')_report.txt
     echo "*** File: $FILE ***\n" > "$REPORT"
-    for CHECK in pylint3 pycodestyle pydocstyle black
+    for CHECK in pylint pycodestyle pydocstyle black
     do
         case "$CHECK" in
-            pylint3|pycodestyle|pydocstyle)
+            pylint|pycodestyle|pydocstyle)
                 OPTS="-v"
                 ;;
             black)
