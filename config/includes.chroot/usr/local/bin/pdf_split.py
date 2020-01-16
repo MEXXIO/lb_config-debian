@@ -23,7 +23,7 @@ Glossary, 76, 80
 
 
 from os import path, system
-from sys import argv
+import sys
 
 from numpy import genfromtxt
 
@@ -31,11 +31,11 @@ from numpy import genfromtxt
 def pdf_split(pdf_source_file):
     """Use Ghostscript to split a pdf file into individual parts."""
     if not path.isfile(pdf_source_file):
-        quit(f"The pdf file {pdf_source_file} does not exist!")
+        sys.exit(f"The pdf file {pdf_source_file} does not exist!")
 
     pages_file = pdf_source_file + ".pages"
     if not path.isfile(pages_file):
-        quit(f"The pages file {pages_file} does not exist!")
+        sys.exit(f"The pages file {pages_file} does not exist!")
 
     print(f"Splitting pdf file: {pdf_source_file}")
 
@@ -75,5 +75,5 @@ def pdf_split(pdf_source_file):
 
 
 if __name__ == "__main__":
-    if len(argv) == 2:
-        pdf_split(argv[1])
+    if len(sys.argv) == 2:
+        pdf_split(sys.argv[1])
