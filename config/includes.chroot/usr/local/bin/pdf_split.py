@@ -3,8 +3,8 @@
 
 """Use Ghostscript to split a pdf file into individual sections.
 
-This script assumes that you have python3, the python3-numpy module, and
-Ghostscript installed.
+This script assumes that you have python3, the python3-magic and python3-numpy
+modules, and Ghostscript installed.
 
 Accept a pdf file as input and split it into individual pdf files containing
 each part, using section names and page number boundaries defined by the user.
@@ -25,6 +25,7 @@ Glossary, 76, 80
 from os import path, system
 import sys
 
+from magic import from_file
 from numpy import genfromtxt
 
 
@@ -32,6 +33,10 @@ def pdf_split(pdf_source_file):
     """Use Ghostscript to split a pdf file into individual parts."""
     if not path.isfile(pdf_source_file):
         sys.exit(f"The pdf file {pdf_source_file} does not exist!")
+
+    file_type = from_file(pdf_source_file)
+    if "PDF document" not in file_type:
+        sys.exit(f"The file {pdf_source_file} is not a valid pdf file!")
 
     pages_file = pdf_source_file + ".pages"
     if not path.isfile(pages_file):
