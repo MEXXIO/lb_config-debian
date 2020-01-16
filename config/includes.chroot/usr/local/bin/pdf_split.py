@@ -44,7 +44,12 @@ def pdf_split(pdf_source_file):
 
     print(f"Splitting pdf file: {pdf_source_file}")
 
-    pages = genfromtxt(pages_file, dtype="str", delimiter=", ")
+    try:
+        pages = genfromtxt(pages_file, dtype="str", delimiter=", ")
+    except ValueError as exception:
+        print(f"The file {pages_file} is not a valid pages file!")
+        sys.exit(exception)
+
     index = 0
     while index < len(pages):
         pdf_destination_file = pages[index][0] + ".pdf"
