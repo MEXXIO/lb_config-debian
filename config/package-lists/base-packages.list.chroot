@@ -5,7 +5,6 @@ at-spi2-core
 bison
 black
 bzip2
-cowsay
 curl
 dconf-cli
 dconf-editor
@@ -18,7 +17,6 @@ fbreader
 ffmpeg
 flex
 fonts-noto-color-emoji
-fortunes
 ghostscript
 git
 gnome-disk-utility
@@ -30,7 +28,6 @@ gstreamer1.0-plugins-bad
 gstreamer1.0-plugins-good
 gstreamer1.0-plugins-ugly
 gstreamer1.0-pulseaudio
-haskell-misfortune
 hwinfo
 idle
 inxi

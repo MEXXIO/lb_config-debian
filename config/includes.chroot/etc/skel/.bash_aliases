@@ -40,6 +40,3 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias ll='ls -vl'
 alias la='ls -vA'
 alias l='ls -vCF'
-
-# stoned rainbow cow
-misfortune | cowsay -s | lolcat
