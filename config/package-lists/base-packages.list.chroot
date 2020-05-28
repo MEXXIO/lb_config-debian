@@ -8,6 +8,7 @@ bzip2
 curl
 dconf-cli
 dconf-editor
+desmume
 dnsutils
 dosfstools
 eddie-ui
@@ -51,12 +52,14 @@ live-build
 lm-sensors
 lolcat
 mediainfo
+mednaffe
 meld
 mencoder
 mesa-utils
 mesa-va-drivers
 mesa-vdpau-drivers
 mesa-vulkan-drivers
+mupen64plus-qt
 network-manager-gnome
 openvpn
 p7zip-full
